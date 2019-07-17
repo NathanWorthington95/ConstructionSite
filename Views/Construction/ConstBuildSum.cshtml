@@ -1,0 +1,189 @@
+﻿@model IEnumerable<FYP.Models.ConWork>
+
+@{
+    ViewBag.Title = "ConstBuildSum";
+}
+
+<h2>ConstBuildSum</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Demolition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DemMetre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteClear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteClearMetre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreConTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FloorLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StructureCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalWall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoofStructure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuperStructCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoofTiles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoDoors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoWindows)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plumbing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Heating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Electrics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plastering)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Decor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatioMetre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriveWay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriveWayMetre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicesCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Demolition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DemMetre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteClear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteClearMetre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreConTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stories)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FloorLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StructureCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalWall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoofStructure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SuperStructCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoofTiles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoDoors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoWindows)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plumbing)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Heating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Electrics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plastering)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Decor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatioMetre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriveWay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriveWayMetre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicesCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

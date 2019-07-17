@@ -1,0 +1,372 @@
+﻿@model FYP.Models.ConWork
+
+
+@{
+    ViewBag.Title = "ConstructionBuilder";
+}
+
+<h2>ConstructionBuilder</h2>
+
+@using (Html.BeginForm())
+
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Construction Builder</h4>
+        <hr />
+        <h4>Pre-Construction</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" title="Is there any demolition work required?">
+            @Html.LabelFor(model => model.Demolition, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Demolition)
+                    @Html.ValidationMessageFor(model => model.Demolition, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group DemMet-hide" title="How many m2 of demolition is needed?">
+            @Html.LabelFor(model => model.DemMetre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DemMetre, new { htmlAttributes = new { @class = "form-control", @placeholder = "How much demolition is needed in m2?" } })
+                @Html.ValidationMessageFor(model => model.DemMetre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="Will the site need to be cleared?">
+            @Html.LabelFor(model => model.SiteClear, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.SiteClear)
+                    @Html.ValidationMessageFor(model => model.SiteClear, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group SiteClear-hide" title="How many metres squared is the site?">
+            @Html.LabelFor(model => model.SiteClearMetre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SiteClearMetre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SiteClearMetre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.PreConTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PreConTotal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PreConTotal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr/>
+
+        <h4>Structure Cost</h4>
+
+        <div class="form-group" title="How many stories will the building be?">
+            @Html.LabelFor(model => model.Stories, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Stories, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Stories, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="How many metre squared will the house be?">
+            @Html.LabelFor(model => model.FloorLength, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FloorLength, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FloorLength, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.StructureCost, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StructureCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StructureCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr/>
+
+        <h4>Super Structure Cost</h4>
+
+        <div class="form-group" title="Will the building be brick, stone or wood?">
+            @Html.LabelFor(model => model.ExternalWall, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Brick
+                @Html.RadioButtonFor(model => model.ExternalWall, "brick", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Stone
+                @Html.RadioButtonFor(model => model.ExternalWall, "stone", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Wood
+                @Html.RadioButtonFor(model => model.ExternalWall, "wood", new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
+                @Html.ValidationMessageFor(model => model.ExternalWall, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="How will the roof be structured?">
+            @Html.LabelFor(model => model.RoofStructure, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Open Gable Roof
+                @Html.RadioButtonFor(model => model.RoofStructure, "ogr", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Front Gable
+                @Html.RadioButtonFor(model => model.RoofStructure, "fg", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Flat
+                @Html.RadioButtonFor(model => model.RoofStructure, "f", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Dormer
+                @Html.RadioButtonFor(model => model.RoofStructure, "d", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Simple hip roof
+                @Html.RadioButtonFor(model => model.RoofStructure, "shr", new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
+                @Html.ValidationMessageFor(model => model.RoofStructure, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.SuperStructCost, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SuperStructCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SuperStructCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr/>
+
+        <h4>External Cost</h4>
+
+        <div class="form-group" title="What tiles will the roof use?">
+            @Html.LabelFor(model => model.RoofTiles, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Concrete Roof tiles
+                @Html.RadioButtonFor(model => model.RoofTiles, "crt", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Natural Slate Roof Tiles
+                @Html.RadioButtonFor(model => model.RoofTiles, "nsrt", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Clay Roof Tiles
+                @Html.RadioButtonFor(model => model.RoofTiles, "crt2", new { htmlAttributes = new { @class = "form-control" } })
+                <br />
+                Artificial Slate Roof Tiles
+                @Html.RadioButtonFor(model => model.RoofTiles, "asrt", new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
+                @Html.ValidationMessageFor(model => model.RoofTiles, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="How many doors will the building have?">
+            @Html.LabelFor(model => model.NoDoors, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoDoors, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoDoors, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="How many windows will the building have?">
+            @Html.LabelFor(model => model.NoWindows, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoWindows, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoWindows, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.ExternalCost, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExternalCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExternalCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <h4>Services Cost</h4>
+
+        <div class="form-group" title="Will you require plumbing?">
+            @Html.LabelFor(model => model.Plumbing, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Plumbing)
+                    @Html.ValidationMessageFor(model => model.Plumbing, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you require heating?">
+            @Html.LabelFor(model => model.Heating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Heating)
+                    @Html.ValidationMessageFor(model => model.Heating, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you require electrics fitting?">
+            @Html.LabelFor(model => model.Electrics, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Electrics)
+                    @Html.ValidationMessageFor(model => model.Electrics, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you require plastering?">
+            @Html.LabelFor(model => model.Plastering, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Plastering)
+                    @Html.ValidationMessageFor(model => model.Plastering, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you require a decorator?">
+            @Html.LabelFor(model => model.Decor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Decor)
+                    @Html.ValidationMessageFor(model => model.Decor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you need a patio floor?">
+            @Html.LabelFor(model => model.Patio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Patio)
+                    @Html.ValidationMessageFor(model => model.Patio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group Patio-hide" title="How big is the patio in metres squared?">
+            @Html.LabelFor(model => model.PatioMetre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatioMetre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PatioMetre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" title="Will you require a drive way built?">
+            @Html.LabelFor(model => model.DriveWay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.DriveWay)
+                    @Html.ValidationMessageFor(model => model.DriveWay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group Drive-hide" title="How big will the drive way be in metres squared?">
+            @Html.LabelFor(model => model.DriveWayMetre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DriveWayMetre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DriveWayMetre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.ServicesCost, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServicesCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ServicesCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Extra, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Extra, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Extra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.TotalCost, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TotalCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Homepage", "Index")
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('.Patio-hide').hide();
+        $('.Drive-hide').hide();
+        $('.DemMet-hide').hide();
+        $('.SiteClear-hide').hide();
+
+
+        $('#Demolition').on('click', function () {
+            if ($('#Demolition').is(':checked')) {
+                console.log("open");
+                $('.DemMet-hide').fadeIn('slow');
+            } else {
+                $('.DemMet-hide').fadeOut('slow');
+            }
+
+        });
+
+        $('#SiteClear').on('click', function () {
+            if ($('#SiteClear').is(':checked')) {
+                console.log("open");
+                $('.SiteClear-hide').fadeIn('slow');
+            } else {
+                $('.SiteClear-hide').fadeOut('slow');
+            }
+
+        });
+
+        $('#Patio').on('click', function () {  
+            if ($('#Patio').is(':checked')) {
+                console.log("open");
+                $('.Patio-hide').fadeIn('slow');
+            } else {
+                $('.Patio-hide').fadeOut('slow');
+            }
+
+        });
+
+        $('#DriveWay').on('click', function () {
+            if ($('#DriveWay').is(':checked')) {
+                console.log("open");
+                $('.Drive-hide').fadeIn('slow');
+            } else {
+                $('.Drive-hide').fadeOut('slow');
+            }
+
+        });
+
+
+
+
+    });
+
+
+
+</script>
